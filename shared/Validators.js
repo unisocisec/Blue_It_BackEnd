@@ -50,7 +50,8 @@ exports.gameParameterValidator = (gameParameterReq) => {
         HeightDownThreshold: 'required|numeric',
         SizeIncrement: 'required|numeric',
         SizeUpThreshold: 'required|numeric',
-        SizeDownThreshold: 'required|numeric'
+        SizeDownThreshold: 'required|numeric',
+        Loops: 'required|integer'
     };
 
     let validation = new Validator(gameParameterReq, rules);
