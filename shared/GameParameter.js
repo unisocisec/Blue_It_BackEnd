@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const GameParameterSchema = mongoose.Schema({
-    StageId: { type: Number, min: 1 },
-    Phase: { type: Number, min: 1, max: 4 },
-    Level: { type: Number, min: 1 },
+    stageId: { type: Number, min: 1 },
+    phase: { type: Number, min: 1, max: 4 },
+    level: { type: Number, min: 1 },
     pacientId: { type: String },
     ObjectSpeedFactor: { type: mongoose.Types.Decimal128, min: 1.0, max: 4.0 },
     HeightIncrement: { type: mongoose.Types.Decimal128, min: 0.0, max: 1.0 },
