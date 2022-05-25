@@ -6,7 +6,7 @@
       "direction": "in",
       "name": "req",
       "methods": ["get"],
-      "route": "calibrations"
+      "route": "gameparameter"
     },
     {
       "type": "http",
