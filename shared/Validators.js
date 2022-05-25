@@ -38,6 +38,26 @@ exports.plataformOverviewSaveValidator = (plataformOverviewReq) => {
     return validation;
 }
 
+exports.gameParameterValidator = (gameParameterReq) => {
+    let rules = {
+        stageId: 'required|integer',
+        phase: 'required|integer',
+        level: 'required|numeric',
+        pacientId: ['required', 'regex:/^[0-9a-fA-F]{24}$/i'],
+        ObjectSpeedFactor: 'required|numeric',
+        HeightIncrement: 'required|numeric',
+        HeightUpThreshold: 'required|numeric',
+        HeightDownThreshold: 'required|numeric',
+        SizeIncrement: 'required|numeric',
+        SizeUpThreshold: 'required|numeric',
+        SizeDownThreshold: 'required|numeric'
+    };
+
+    let validation = new Validator(gameParameterReq, rules);
+    validation.check();
+    return validation;
+}
+
 exports.pacientSaveValidator = (pacientReq) => {
 
     pacientReq.birthday = pacientReq.birthday.replace(new RegExp('/', 'g'), '-');
