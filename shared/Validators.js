@@ -42,7 +42,7 @@ exports.gameParameterValidator = (gameParameterReq) => {
     let rules = {
         stageId: 'required|integer',
         phase: 'required|integer',
-        level: 'required|numeric',
+        level: 'required|integer',
         pacientId: ['required', 'regex:/^[0-9a-fA-F]{24}$/i'],
         ObjectSpeedFactor: 'required|numeric',
         HeightIncrement: 'required|numeric',

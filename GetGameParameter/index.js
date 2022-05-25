@@ -28,29 +28,29 @@ module.exports = async function (context, req) {
     const findOptionsObj = { sort: { created_at: -1 } };
 
     if (req.query.pacientId)
-        findObj._id = req.query.pacientId;
-    if (req.query.StageId)
-        findObj._id = req.query.StageId;
-    if (req.query.Phase)
-        findObj._id = req.query.Phase;
-    if (req.query.Level)
-        findObj._id = req.query.Level;
+        findObj.pacientId = req.query.pacientId;
+    if (req.query.stageId)
+        findObj.stageId = req.query.stageId;
+    if (req.query.phase)
+        findObj.phase = req.query.phase;
+    if (req.query.level)
+        findObj.level = req.query.level;
     if (req.query.ObjectSpeedFactor)
-        findObj._id = req.query.ObjectSpeedFactor;
+        findObj.ObjectSpeedFactor = req.query.ObjectSpeedFactor;
     if (req.query.HeightIncrement)
-        findObj._id = req.query.HeightIncrement;
+        findObj.HeightIncrement = req.query.HeightIncrement;
     if (req.query.HeightUpThreshold)
-        findObj._id = req.query.HeightUpThreshold;
+        findObj.HeightUpThreshold = req.query.HeightUpThreshold;
     if (req.query.HeightDownThreshold)
-        findObj._id = req.query.HeightDownThreshold;
+        findObj.HeightDownThreshold = req.query.HeightDownThreshold;
     if (req.query.SizeIncrement)
-        findObj._id = req.query.SizeIncrement;
+        findObj.SizeIncrement = req.query.SizeIncrement;
     if (req.query.SizeUpThreshold)
-        findObj._id = req.query.SizeUpThreshold;    
+        findObj.SizeUpThreshold = req.query.SizeUpThreshold;    
     if (req.query.SizeDownThreshold)
-        findObj._id = req.query.SizeDownThreshold;    
+        findObj.SizeDownThreshold = req.query.SizeDownThreshold;    
     if (req.query.Loops)
-        findObj._id = req.query.Loops;    
+        findObj.Loops = req.query.Loops;    
     if (req.query.dataIni)
         findObj.created_at = {
             $gte: new Date(req.query.dataIni).toISOString("yyyy-MM-ddThh:mm:ss.msZ")
