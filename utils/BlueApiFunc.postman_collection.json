@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "452847a9-fa75-4c87-9e10-3b6fcf1e29e3",
+		"_postman_id": "21bde70f-78f8-4072-b90d-83f063e82126",
 		"name": "BlueApiFunc",
 		"description": "Coleção de chamadas para os endpoints da API do I Blue It (Blue Api)\n\n**Definição de prefixos dos endpoints**\n\n- Send: envia de dados para serem gravados no banco de dados.\n- Get: busca os dados de acordo com os parâmetros incluídos na URL\n- Update: realiza a atualização dos dados. Deve-se passar o mesmo modelo enviado para a mesma rota contendo o prefixo Send, mas desta vez, contendo o ID do modelo a ser atualizado.\n\n---\n\n**Observações**\n\n- Os parâmetros na busca (Get) são encadeados, ou seja, os resultados têm que obedecer todos os parâmetros passados.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11125765"
 	},
 	"item": [
 		{
@@ -254,9 +255,40 @@
 						"description": "Autenticação de usuário com username/password"
 					},
 					"response": []
+				},
+				{
+					"name": "Salvar Os Parametros de Configurações do Jogo Recomendado",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "GameToken",
+								"value": "0a377edf-9e39-427b-9426-ef87afb7287f",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"stageId\": 1,\r\n    \"phase\": 4,\r\n    \"level\": 1,\r\n    \"pacientId\": \"5ef65864c5890811745b31db\",\r\n    \"ObjectSpeedFactor\": 0.7,\r\n    \"HeightIncrement\": 0.7,\r\n    \"HeightUpThreshold\": 0.7,\r\n    \"HeightDownThreshold\": 0.7,\r\n    \"SizeIncrement\": 0.7,\r\n    \"SizeUpThreshold\": 0.7,\r\n    \"SizeDownThreshold\": 0.7,\r\n    \"Loops\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/gameparameter",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gameparameter"
+							]
+						}
+					},
+					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Get",
@@ -597,7 +629,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "0e9af32a-0b23-4c88-9b5f-f093fe797605",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -607,16 +638,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "31d1930f-fcb3-492d-b79c-11a0764dfa3f",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Calibrações",
@@ -784,7 +812,7 @@
 								},
 								{
 									"key": "skip",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -869,6 +897,36 @@
 						"description": "Para busca de valores dos dispositivos utilizados em um determinado registro de minigame/plataforma"
 					},
 					"response": []
+				},
+				{
+					"name": "Parametros de Configurações do Jogo Recomendado",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "GameToken",
+								"value": "0a377edf-9e39-427b-9426-ef87afb7287f",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/gameparameter?pacientId=5ef65864c5890811745b31db",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"gameparameter"
+							],
+							"query": [
+								{
+									"key": "pacientId",
+									"value": "5ef65864c5890811745b31db",
+									"description": "Parametros de Configurações do Jogo Recomendado"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "Valores possíveis para\n\n\"gameDevice\": \"Pitaco\"\n\n\"minigameName\": \n\t-\"CakeGame\"\n\t-\"WaterGame\"\n\t-\"BirdGame\"\n\n\"respiratoryExercise\":\n\t-\"RespiratoryFrequency\"\n\t-\"InspiratoryPeak\"\n\t-\"InspiratoryDuration\"\n\t-\"ExpiratoryPeak\"\n\t-\"ExpiratoryDuration\"",
@@ -876,7 +934,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0a2e266e-a92e-4845-aa04-f57539305345",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -886,15 +943,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "968fd4a2-1b95-4e70-ace7-6cc5e5976ca7",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Update",
@@ -945,8 +1000,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Delete",
@@ -983,15 +1037,13 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "427bf137-ac3b-4b33-bafd-0a0c926fd663",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1001,13 +1053,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "3f4dd85d-57ec-4aba-89e5-a96b8c82ea8a",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
