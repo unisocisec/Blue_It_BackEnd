@@ -7,6 +7,7 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.28",
@@ -15,7 +16,8 @@
     "uuid": "^7.0.3",
     "validate.js": "^0.13.1",
     "validator": "^13.1.1",
-    "validatorjs": "^3.18.1"
+    "validatorjs": "^3.18.1",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {}
 }
