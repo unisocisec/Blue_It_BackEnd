@@ -22,13 +22,13 @@ module.exports = async function (context, req) {
     const gameParameterReq = req.body || {};
 
     if (Object.entries(gameParameterReq).length === 0) {
-        context.res = { status: 400, body: utils.createResponse(false, true, "Dados vazios!", null, 2 ) }
+        context.res = { status: 400, body: utils.createResponse(false, true, "Dados vazios!", null, 2) }
         context.done();
         return;
     }
 
     let validationResult = validations.gameParameterValidator(gameParameterReq);
-    if(validationResult.errorCount !== 0){
+    if (validationResult.errorCount !== 0) {
         let response = utils.createResponse(false, true, "Erros de validação encontrados!", null, 2);
         response.errors = validationResult.errors.errors;
         context.res = { status: 400, body: response }
@@ -39,9 +39,27 @@ module.exports = async function (context, req) {
     gameParameterReq._gameToken = req.headers.gametoken;
 
     try {
-        const savedGameParameterReq = await (new GameParameterModel(gameParameterReq)).save();
-        context.log("[DB SAVING] - Game Parameter Saved: ", savedGameParameterReq);
-        context.res = { status: 201, body: utils.createResponse(true, true, "Paciente salvo com sucesso.", savedGameParameterReq, null) }
+        const GameParameterModels = await GameParameterModel.findOne({ pacientId: gameParameterReq.pacientId }, null, { sort: { created_at: 1 } });
+        if (GameParameterModels) {
+            GameParameterModels.stageId = gameParameterReq.stageId,
+            GameParameterModels.phase = gameParameterReq.phase,
+            GameParameterModels.level = gameParameterReq.level,
+            GameParameterModels.ObjectSpeedFactor = gameParameterReq.ObjectSpeedFactor,
+            GameParameterModels.HeightIncrement = gameParameterReq.HeightIncrement,
+            GameParameterModels.HeightUpThreshold = gameParameterReq.HeightUpThreshold,
+            GameParameterModels.HeightDownThreshold = gameParameterReq.HeightDownThreshold,
+            GameParameterModels.SizeIncrement = gameParameterReq.SizeIncrement,
+            GameParameterModels.SizeUpThreshold = gameParameterReq.SizeUpThreshold,
+            GameParameterModels.SizeDownThreshold = gameParameterReq.SizeDownThreshold,
+            GameParameterModels.Loops = gameParameterReq.Loops
+            const savedGameParameterReq = await GameParameterModels.save();
+            context.log("[DB UPDATING] - Game Parameter Updated: ", savedGameParameterReq);
+            context.res = { status: 201, body: utils.createResponse(true, true, "Paciente salvo com sucesso.", savedGameParameterReq, null) }
+        } else {
+            const savedGameParameterReq = await (new GameParameterModel(gameParameterReq)).save();
+            context.log("[DB SAVING] - Game Parameter Saved: ", savedGameParameterReq);
+            context.res = { status: 201, body: utils.createResponse(true, true, "Paciente salvo com sucesso.", savedGameParameterReq, null) }
+        }
     } catch (err) {
         context.log("[DB SAVING] - ERROR: ", err);
         context.res = { status: 500, body: utils.createResponse(false, true, "Ocorreu um erro interno ao realizar a operação.", null, 00) }

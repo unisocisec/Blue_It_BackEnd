@@ -16,7 +16,7 @@ module.exports = async function (context, req) {
 
     var isVerifiedGameToken = await utils.verifyGameToken(req.headers.gametoken, mongoose);
 
-    if(!isVerifiedGameToken){
+    if (!isVerifiedGameToken) {
         context.res = {
             status: 403,
             body: utils.createResponse(false,
@@ -46,10 +46,10 @@ module.exports = async function (context, req) {
                 "pacientId": pacientId
             })
         };
-    
+
         const functionResponse = await axios(config).then(function (response) {
             neighborsPacientIds = response.data.neighborsPacientIds
-            if(!neighborsPacientIds.length > 0) {
+            if (!neighborsPacientIds.length > 0) {
                 context.res = {
                     status: 200,
                     body: utils.createResponse(false, false, "Não Foi encontrados Vizinhos", null, 1)
@@ -66,46 +66,47 @@ module.exports = async function (context, req) {
             context.done();
             return;
         });
-                var arrayConfigurations = []
-                const GameParameters = await GameParameterModel.find({ "pacientId": neighborsPacientIds });
-                GameParameters.forEach(function(GameParameter){
-                    arrayConfigurations.push({
-                        "stageId": getFloat(GameParameter.stageId),
-                        "phase": getFloat(GameParameter.phase),
-                        "level": getFloat(GameParameter.phase),
-                        "pacientId": GameParameter.pacientId,
-                        "ObjectSpeedFactor": getFloat(GameParameter.ObjectSpeedFactor),
-                        "HeightIncrement": getFloat(GameParameter.HeightIncrement),
-                        "HeightUpThreshold": getFloat(GameParameter.HeightUpThreshold),
-                        "HeightDownThreshold": getFloat(GameParameter.HeightDownThreshold),
-                        "SizeIncrement": getFloat(GameParameter.SizeIncrement),
-                        "SizeUpThreshold": getFloat(GameParameter.SizeUpThreshold),
-                        "SizeDownThreshold": getFloat(GameParameter.SizeDownThreshold),
-                        "Loops": getFloat(GameParameter.Loops),
-                        "isAVG": false
-                    })
-                })
-                arrayConfigurations.push({
-                    "stageId":  parseInt((arrayConfigurations.reduce((sum, configuration) => {  return sum += configuration["stageId"] }, 0))/5),
-                    "phase": parseInt((arrayConfigurations.reduce((sum, configuration) => {  return sum += configuration["phase"] }, 0))/5),
-                    "level": parseInt((arrayConfigurations.reduce((sum, configuration) => {  return sum += configuration["level"] }, 0))/5),
-                    "pacientId": null,
-                    "ObjectSpeedFactor": (arrayConfigurations.reduce((sum, configuration) => {  return sum += configuration["ObjectSpeedFactor"] }, 0))/5,
-                    "HeightIncrement": (arrayConfigurations.reduce((sum, configuration) => {  return sum += configuration["HeightIncrement"] }, 0))/5,
-                    "HeightUpThreshold": (arrayConfigurations.reduce((sum, configuration) => {  return sum += configuration["HeightUpThreshold"] }, 0))/5,
-                    "HeightDownThreshold": (arrayConfigurations.reduce((sum, configuration) => {  return sum += configuration["HeightDownThreshold"] }, 0))/5,
-                    "SizeIncrement": (arrayConfigurations.reduce((sum, configuration) => {  return sum += configuration["SizeIncrement"] }, 0))/5,
-                    "SizeUpThreshold": (arrayConfigurations.reduce((sum, configuration) => {  return sum += configuration["SizeUpThreshold"] }, 0))/5,
-                    "SizeDownThreshold": (arrayConfigurations.reduce((sum, configuration) => {  return sum += configuration["SizeDownThreshold"] }, 0))/5,
-                    "Loops": parseInt((arrayConfigurations.reduce((sum, configuration) => {  return sum += configuration["Loops"] }, 0))/5),
-                    "isAVG": true
-                })
-                console.log("Objeto URL_API_IA:", URL_API_IA);
-                context.res = {
-                    status: 200,
-                    body: utils.createResponse(true, true, "Consulta realizada com sucesso.", arrayConfigurations, null)
-                }
-                context.done();
+        var arrayConfigurations = []
+        const GameParameters = await GameParameterModel.find({ "pacientId": neighborsPacientIds });
+        const GameParametersLength = GameParameters.length;
+        GameParameters.forEach(function (GameParameter) {
+            arrayConfigurations.push({
+                "stageId": getFloat(GameParameter.stageId),
+                "phase": getFloat(GameParameter.phase),
+                "level": getFloat(GameParameter.phase),
+                "pacientId": GameParameter.pacientId,
+                "ObjectSpeedFactor": getFloat(GameParameter.ObjectSpeedFactor),
+                "HeightIncrement": getFloat(GameParameter.HeightIncrement),
+                "HeightUpThreshold": getFloat(GameParameter.HeightUpThreshold),
+                "HeightDownThreshold": getFloat(GameParameter.HeightDownThreshold),
+                "SizeIncrement": getFloat(GameParameter.SizeIncrement),
+                "SizeUpThreshold": getFloat(GameParameter.SizeUpThreshold),
+                "SizeDownThreshold": getFloat(GameParameter.SizeDownThreshold),
+                "Loops": getFloat(GameParameter.Loops),
+                "isAVG": false
+            })
+        })
+        arrayConfigurations.push({
+            "stageId": parseInt((arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["stageId"] }, 0)) / GameParametersLength),
+            "phase": parseInt((arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["phase"] }, 0)) / GameParametersLength),
+            "level": parseInt((arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["level"] }, 0)) / GameParametersLength),
+            "pacientId": null,
+            "ObjectSpeedFactor": (arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["ObjectSpeedFactor"] }, 0)) / GameParametersLength,
+            "HeightIncrement": (arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["HeightIncrement"] }, 0)) / GameParametersLength,
+            "HeightUpThreshold": (arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["HeightUpThreshold"] }, 0)) / GameParametersLength,
+            "HeightDownThreshold": (arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["HeightDownThreshold"] }, 0)) / GameParametersLength,
+            "SizeIncrement": (arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["SizeIncrement"] }, 0)) / GameParametersLength,
+            "SizeUpThreshold": (arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["SizeUpThreshold"] }, 0)) / GameParametersLength,
+            "SizeDownThreshold": (arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["SizeDownThreshold"] }, 0)) / GameParametersLength,
+            "Loops": parseInt((arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["Loops"] }, 0)) / GameParametersLength),
+            "isAVG": true
+        })
+        console.log("Objeto URL_API_IA:", URL_API_IA);
+        context.res = {
+            status: 200,
+            body: utils.createResponse(true, true, "Consulta realizada com sucesso.", arrayConfigurations, null)
+        }
+        context.done();
     }
 };
 
