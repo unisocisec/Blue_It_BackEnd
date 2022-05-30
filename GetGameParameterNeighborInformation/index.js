@@ -46,9 +46,10 @@ module.exports = async function (context, req) {
                 pacientId: pacientId
             }
         };
+        var neighborsPacientReturn;
         const functionResponse = await axios(config).then(function (response) {
-            neighborsPacientIds = response.data.neighborsPacientIds
-            if (!neighborsPacientIds.length > 0) {
+            neighborsPacientReturn = response.data.neighborsPacientReturn
+            if (!neighborsPacientReturn.length > 0) {
                 context.res = {
                     status: 200,
                     body: utils.createResponse(false, false, "Não Foi encontrados Vizinhos", null, 1)
@@ -65,6 +66,7 @@ module.exports = async function (context, req) {
             context.done();
             return;
         });
+        var neighborsPacientIds = neighborsPacientReturn.map((neighborsPacient) => neighborsPacient.pacientId)
         var arrayConfigurations = []
         const GameParameters = await GameParameterModel.find({ "pacientId": neighborsPacientIds });
         const GameParametersLength = GameParameters.length;
@@ -74,6 +76,7 @@ module.exports = async function (context, req) {
                 "phase": getFloat(GameParameter.phase),
                 "level": getFloat(GameParameter.phase),
                 "pacientId": GameParameter.pacientId,
+                "pacientName": neighborsPacientReturn.find(neighborsPacient => neighborsPacient.pacientId === GameParameter.pacientId).pacientName,
                 "ObjectSpeedFactor": getFloat(GameParameter.ObjectSpeedFactor),
                 "HeightIncrement": getFloat(GameParameter.HeightIncrement),
                 "HeightUpThreshold": getFloat(GameParameter.HeightUpThreshold),
@@ -91,6 +94,7 @@ module.exports = async function (context, req) {
             "phase": parseInt((arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["phase"] }, 0)) / GameParametersLength),
             "level": parseInt((arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["level"] }, 0)) / GameParametersLength),
             "pacientId": null,
+            "pacientName": null,
             "ObjectSpeedFactor": (arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["ObjectSpeedFactor"] }, 0)) / GameParametersLength,
             "HeightIncrement": (arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["HeightIncrement"] }, 0)) / GameParametersLength,
             "HeightUpThreshold": (arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["HeightUpThreshold"] }, 0)) / GameParametersLength,
