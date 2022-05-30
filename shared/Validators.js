@@ -3,7 +3,7 @@ const Validator = require('validatorjs');
 exports.plataformOverviewSaveValidator = (plataformOverviewReq) => {
     let rules = {
         pacientId: ['required', 'regex:/^[0-9a-fA-F]{24}$/i'],
-        'flowDataDevices.*.deviceName': ['required', {'in': ['Pitaco', 'Manovacuômetro', 'Cinta']}],
+        'flowDataDevices.*.deviceName': ['required', { 'in': ['Pitaco', 'Manovacuômetro', 'Cinta'] }],
         'flowDataDevices.*.flowData.*.flowValue': 'required|numeric',
         'flowDataDevices.*.flowData.*.timestamp': 'required|date',
         playStart: 'required|date',
@@ -51,9 +51,10 @@ exports.gameParameterValidator = (gameParameterReq) => {
         SizeIncrement: 'required|numeric',
         SizeUpThreshold: 'required|numeric',
         SizeDownThreshold: 'required|numeric',
-        Loops: 'required|integer'
+        Loops: 'required|integer',
+        gameScript: 'required|array'
     };
-
+    
     let validation = new Validator(gameParameterReq, rules);
     validation.check();
     return validation;
@@ -114,12 +115,12 @@ exports.minigameOverviewSaveValidator = (minigameOverviewReq) => {
 
     let rules = {
         pacientId: ['required', 'regex:/^[0-9a-fA-F]{24}$/i'],
-        minigameName: ['required', {'in': ['CakeGame', 'WaterGame']}],
-        respiratoryExercise: ['required', {'in': ['ExpiratoryPeak', 'InspiratoryPeak']}],
+        minigameName: ['required', { 'in': ['CakeGame', 'WaterGame'] }],
+        respiratoryExercise: ['required', { 'in': ['ExpiratoryPeak', 'InspiratoryPeak'] }],
         'flowDataRounds.*.minigameRound': 'required|integer',
         'flowDataRounds.*.roundScore': 'required|integer',
         'flowDataRounds.*.roundFlowScore': 'required|numeric',
-        'flowDataRounds.*.flowDataDevices.*.deviceName': ['required', {'in': ['Pitaco', 'Manovacuômetro', 'Cinta']}],
+        'flowDataRounds.*.flowDataDevices.*.deviceName': ['required', { 'in': ['Pitaco', 'Manovacuômetro', 'Cinta'] }],
         'flowDataRounds.*.flowDataDevices.*.flowData.*.flowValue': 'required|numeric',
         'flowDataRounds.*.flowDataDevices.*.flowData.*.timestamp': 'required|date',
     };
@@ -134,8 +135,8 @@ exports.calibrationOverviewSaveValidator = (calibrationOverviewReq) => {
 
     let rules = {
         pacientId: ['required', 'regex:/^[0-9a-fA-F]{24}$/i'],
-        gameDevice: ['required', {'in': ['Pitaco', 'Manovacuômetro', 'Cinta']}],
-        calibrationExercise: ['required', {'in': ['ExpiratoryPeak', 'InspiratoryPeak', 'ExpiratoryDuration', 'InspiratoryDuration', 'RespiratoryFrequency']}],
+        gameDevice: ['required', { 'in': ['Pitaco', 'Manovacuômetro', 'Cinta'] }],
+        calibrationExercise: ['required', { 'in': ['ExpiratoryPeak', 'InspiratoryPeak', 'ExpiratoryDuration', 'InspiratoryDuration', 'RespiratoryFrequency'] }],
         calibrationValue: 'required|integer'
     };
 
@@ -164,8 +165,8 @@ exports.createUserValidator = (createTokenReq) => {
         username: 'required|string',
         password: 'required|string',
         email: 'required|email',
-        role: ['required', {'in': ['Administrator', 'User']}],
-        pacientId: [{required_if: ['role', 'User']}, 'regex:/^[0-9a-fA-F]{24}$/i'],
+        role: ['required', { 'in': ['Administrator', 'User'] }],
+        pacientId: [{ required_if: ['role', 'User'] }, 'regex:/^[0-9a-fA-F]{24}$/i'],
     };
 
     let validation = new Validator(createTokenReq, rules);

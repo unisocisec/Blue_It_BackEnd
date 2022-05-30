@@ -83,6 +83,7 @@ module.exports = async function (context, req) {
                 "SizeUpThreshold": getFloat(GameParameter.SizeUpThreshold),
                 "SizeDownThreshold": getFloat(GameParameter.SizeDownThreshold),
                 "Loops": getFloat(GameParameter.Loops),
+                "gameScript": GameParameter.gameScript,
                 "isAVG": false
             })
         })
@@ -99,6 +100,7 @@ module.exports = async function (context, req) {
             "SizeUpThreshold": (arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["SizeUpThreshold"] }, 0)) / GameParametersLength,
             "SizeDownThreshold": (arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["SizeDownThreshold"] }, 0)) / GameParametersLength,
             "Loops": parseInt((arrayConfigurations.reduce((sum, configuration) => { return sum += configuration["Loops"] }, 0)) / GameParametersLength),
+            "gameScript": arrayConfigurations.find(function(arrayConfiguration){ return !!arrayConfiguration.gameScript && arrayConfiguration.gameScript.length > 0 }).gameScript || [],
             "isAVG": true
         })
         console.log("Objeto URL_API_IA:", URL_API_IA);

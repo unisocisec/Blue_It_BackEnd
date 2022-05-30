@@ -52,6 +52,7 @@ module.exports = async function (context, req) {
             GameParameterModels.SizeUpThreshold = gameParameterReq.SizeUpThreshold,
             GameParameterModels.SizeDownThreshold = gameParameterReq.SizeDownThreshold,
             GameParameterModels.Loops = gameParameterReq.Loops
+            GameParameterModels.gameScript = gameParameterReq.gameScript
             const savedGameParameterReq = await GameParameterModels.save();
             context.log("[DB UPDATING] - Game Parameter Updated: ", savedGameParameterReq);
             context.res = { status: 201, body: utils.createResponse(true, true, "Paciente salvo com sucesso.", savedGameParameterReq, null) }

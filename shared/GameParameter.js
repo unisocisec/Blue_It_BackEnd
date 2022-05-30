@@ -12,7 +12,13 @@ const GameParameterSchema = mongoose.Schema({
     SizeIncrement: { type: mongoose.Types.Decimal128, min: 0.0, max: 1.0 },
     SizeUpThreshold: { type: mongoose.Types.Decimal128, min: 0.0, max: 5.0 },
     SizeDownThreshold: { type: mongoose.Types.Decimal128, min: 0.0, max: 5.0 },
-    Loops: { type: Number, min: 1, max: 99 }
+    Loops: { type: Number, min: 1, max: 99 },
+    gameScript: [{
+        ObjectType: { type: String },
+        DifficultyFactor: { type: String },
+        PositionYFactor: { type: String },
+        PositionXSpacing: { type: String }
+    }]
 },
     { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }
 );
