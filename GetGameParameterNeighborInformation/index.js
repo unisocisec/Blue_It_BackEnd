@@ -106,7 +106,6 @@ module.exports = async function (context, req) {
             "gameScript": arrayConfigurations.find(function (arrayConfiguration) { return !!arrayConfiguration.gameScript && arrayConfiguration.gameScript.length > 0 }).gameScript || [],
             "isAVG": true
         })
-        console.log("Objeto URL_API_IA:", URL_API_IA);
         context.res = {
             status: 200,
             body: utils.createResponse(true, true, "Consulta realizada com sucesso.", arrayConfigurations, null)
