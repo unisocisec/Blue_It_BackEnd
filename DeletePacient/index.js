@@ -58,7 +58,7 @@ module.exports = async function (context, req) {
             const removedPacient = await PacientModel.deleteOne({ _id: req.params.pacientId });
             context.log("[DB DELETE] - Pacient Deleted: ", removedPacient);
         } else {
-            return db.startSession()
+            db.startSession()
                 .then(_session => {
                     session = _session;
                     session.startTransaction();
@@ -75,11 +75,7 @@ module.exports = async function (context, req) {
         }
         context.res = {
             status: 200,
-            body: utils.createResponse(true,
-                true,
-                "Exclusão realizada com sucesso.",
-                null,
-                null)
+            body: utils.createResponse(true, true, "Exclusão realizada com sucesso.", null, null)
         }
     } catch (err) {
         await session.abortTransaction();

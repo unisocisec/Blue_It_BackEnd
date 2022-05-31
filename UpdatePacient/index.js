@@ -91,11 +91,7 @@ module.exports = async function (context, req) {
         context.log("[DB UPDATE] - Pacient Updated: ", updatedPacient);
         context.res = {
             status: 200,
-            body: utils.createResponse(true,
-                true,
-                "Registro atualizado com sucesso.",
-                flowDataDevice,
-                null)
+            body: utils.createResponse(true, true, "Registro atualizado com sucesso.", updatedPacient, null)
         }
     } catch (err) {
         context.log("[DB DELETE] - ERROR: ", err);
