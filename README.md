@@ -84,6 +84,6 @@ Registre-se e faça o seu login
 - Intermediário de comunicação [iblueit-proxy](https://hub.docker.com/repository/docker/iblueit/proxy)
 - Banco de dados [MongoDB](https://hub.docker.com/_/mongo)
 
-### Infraestrutura
+### Demonstrativo Containers
 
 ![Demonstrativo Containers](https://github.com/unisocisec/Blue_It_BackEnd/blob/main/containers.png?raw=true)
