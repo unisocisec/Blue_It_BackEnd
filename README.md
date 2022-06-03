@@ -1,5 +1,15 @@
 
 ## IBLUEIT 🐬
+Este repositório trata-se de um fork/estudo do projeto **[UDESC-LARVA/IBLUEIT](https://github.com/UDESC-LARVA/IBLUEIT)** no propósito de TCC na Universidade UniSociesc tendo como objetivo a sugestão de melhoria da aplicação.
+
+#### Integrantes
+
+- [@alexandrebfaust](https://github.com/alexandrebfaust) 
+- [@kalitasilva](https://github.com/kalitasilva) 
+- [@Leandro-Custodio](https://github.com/Leandro-Custodio) 
+- [@Lucas-Besen](https://github.com/Lucas-Besen) 
+- [@welingtonlarsen](https://github.com/welingtonlarsen) 
+
 
 ### Instalação com Docker-Compose
 
