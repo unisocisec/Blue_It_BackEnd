@@ -76,7 +76,13 @@ Pronto, o IBLUEIT estará ativo. Para acessá-lo, aponte o navegador Google Chro
 
 Registre-se e faça o seu login
 
-### Docker Repositories
+### Repositórios GitHub - Código fonte
+
+- Aplicação (BackEnd) [Blue_It_BackEnd](https://github.com/unisocisec/Blue_It_BackEnd)
+- Interface gráfica (FrontEnd) [blue_It_front](https://github.com/unisocisec/blue_It_front)
+- Inteligência artificial [Blue_It_IA](https://github.com/unisocisec/Blue_It_IA)
+
+### Repositórios Docker
 
 - Aplicação (BackEnd) [iblueit-api](https://hub.docker.com/repository/docker/iblueit/api)
 - Interface gráfica (FrontEnd) [iblueit-front](https://hub.docker.com/repository/docker/iblueit/front)
