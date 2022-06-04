@@ -27,7 +27,7 @@ Caso queira exemplos de requisições e uma documentação mais detalhada, siga 
 - bcryptjs 2.4.3
 
 ### Instalação e Inicialização SEM Docker-Compose
-1. Baixe o nvm [Windows](https://github.com/coreybutler/nvm-windows/releases) [linux](https://github.com/nvm-sh/nvm)
+1. Baixe o nvm [Windows](https://github.com/coreybutler/nvm-windows/releases) OU [linux](https://github.com/nvm-sh/nvm)
 2. Baixe a Versão dp Node <strong>12.16.1</strong> com:
 ```
 nvm install 12.16.1
@@ -44,7 +44,7 @@ npm install
 ```
 func host start --cors *
 ```
-7. Pronto, o IBLUEIT estará ativo. Para acessá-lo utilize a rota http://localhost:7071/
+7. Pronto, o Blue_It_BackEnd estará ativo. Para acessá-lo utilize a rota http://localhost:7071
 
 ### Instalação e Inicialização COM Docker-Compose
 
@@ -116,9 +116,7 @@ services:
 $ docker-compose up
 ```
 
-Pronto, o IBLUEIT estará ativo. Para acessá-lo, aponte o navegador Google Chrome para http://localhost:7071/
-
-Registre-se e faça o seu login
+5. Pronto, o Blue_It_BackEnd estará ativo. Para acessá-lo utilize a rota http://localhost:7071. Registre-se e faça o seu login
 
 ### Repositórios GitHub - Código fonte
 
