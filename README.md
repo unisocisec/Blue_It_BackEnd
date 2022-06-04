@@ -1,14 +1,15 @@
-
 ## IBLUEIT 🐬
 Este repositório trata-se de um fork/estudo do projeto **[UDESC-LARVA/IBLUEIT](https://github.com/UDESC-LARVA/IBLUEIT)** no propósito de TCC na Universidade UniSociesc tendo como objetivo a sugestão de melhoria da aplicação.
 
 #### Integrantes
-
 - [@alexandrebfaust](https://github.com/alexandrebfaust) 
 - [@kalitasilva](https://github.com/kalitasilva) 
 - [@Leandro-Custodio](https://github.com/Leandro-Custodio) 
 - [@Lucas-Besen](https://github.com/Lucas-Besen) 
-- [@welingtonlarsen](https://github.com/welingtonlarsen) 
+- [@welingtonlarsen](https://github.com/welingtonlarsen)
+
+## Sobre
+Esta aplicação *BackEnd/API* foi desenvolvida baseando-se na azure-functions para criação de rotas especializadas.
 
 ### Documentação em POSTMAN
 Caso queira exemplos de requisições e uma documentação mais detalhada, siga os seguintes passos:
