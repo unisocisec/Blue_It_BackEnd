@@ -28,15 +28,15 @@ Caso queira exemplos de requisições e uma documentação mais detalhada, siga 
 
 ### Instalação e Inicialização SEM Docker-Compose
 1. Baixe o nvm [Windows](https://github.com/coreybutler/nvm-windows/releases) [linux](https://github.com/nvm-sh/nvm)
-2. Baixe a Versão <strong>12.16.1</strong>
+2. Baixe a Versão dp Node <strong>12.16.1</strong> com:
 ```
 nvm install 12.16.1
 ```
-3. Instale o Azure Functions:
+3. Instale o Azure Functions com:
 ```
 npm install -g azure-functions-core-tools@3 --unsafe-perm true
 ```
-4. Rode o comando para instalar as dependencias
+4. Rode o comando para instalar as dependencias:
 ```
 npm install
 ```
