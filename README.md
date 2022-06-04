@@ -26,16 +26,35 @@ Caso queira exemplos de requisições e uma documentação mais detalhada, siga 
 - [Nodemailer](https://nodemailer.com/about/) 6.4.6
 - bcryptjs 2.4.3
 
-### Instalação com Docker-Compose
+### Instalação e Inicialização SEM Docker-Compose
+1. Baixe o nvm [Windows](https://github.com/coreybutler/nvm-windows/releases) [linux](https://github.com/nvm-sh/nvm)
+2. Baixe a Versão <strong>12.16.1</strong>
+```
+nvm install 12.16.1
+```
+3. Instale o Azure Functions:
+```
+npm install -g azure-functions-core-tools@3 --unsafe-perm true
+```
+4. Rode o comando para instalar as dependencias
+```
+npm install
+```
+6. Rode o Script de Start do Azure Function:
+```
+func host start --cors *
+```
+7. Pronto, o IBLUEIT estará ativo. Para acessá-lo utilize a rota http://localhost:7071/
+
+### Instalação e Inicialização COM Docker-Compose
 
 Este repositório contém os artefatos necessários para executar o IBLUEIT utilizando o Docker.
 Antes de mais nada, será necessário instalar alguns pré-requisitos, se ainda não estiverem instalados:
 
-- Instale o [Docker](https://docs.docker.com/install/)
-- Faça o download do arquivo [docker-compose.yml](https://github.com/unisocisec/Blue_It_BackEnd/blob/main/docker-compose.yml "docker-compose.yml").
+1. Instale o [Docker](https://docs.docker.com/install/)
+2. Faça o download do arquivo [docker-compose.yml](https://github.com/unisocisec/Blue_It_BackEnd/blob/main/docker-compose.yml "docker-compose.yml").
 
-Em seguida parametrize as variáveis de ambiente conforme a sua necessidade seguindo o exemplo abaixo:
-
+3. Em seguida parametrize as variáveis de ambiente conforme a sua necessidade seguindo o exemplo abaixo:
 ```yaml
 version: '3.3'
 
@@ -91,7 +110,7 @@ services:
       - "iblueit-api:iblueit-api"
 ```
 
-Utilize o Docker para carregar e depois disponibilizar todos os serviços necessários ao funcionamento do IBLUEIT:
+4. Utilize o Docker para carregar e depois disponibilizar todos os serviços necessários ao funcionamento do IBLUEIT:
 
 ```
 $ docker-compose up
