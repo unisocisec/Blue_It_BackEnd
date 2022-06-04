@@ -10,6 +10,12 @@ Este repositório trata-se de um fork/estudo do projeto **[UDESC-LARVA/IBLUEIT](
 - [@Lucas-Besen](https://github.com/Lucas-Besen) 
 - [@welingtonlarsen](https://github.com/welingtonlarsen) 
 
+### Documentação em POSTMAN
+Caso queira exemplos de requisições e uma documentação mais detalhada, siga os seguintes passos:
+1. Acesso a [Documentação](https://documenter.getpostman.com/view/10306115/Uz5DoweB)
+2. Instale o [Postman](https://www.postman.com/downloads/)
+3. Dentro do Postman, vá em File->Import
+4. Importe o arquivo que se encontra na pasta **utils** deste repositório (*BlueApiFunc.postman_collection.json*)
 
 ### Instalação com Docker-Compose
 
