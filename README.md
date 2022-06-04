@@ -41,6 +41,22 @@ npm install -g azure-functions-core-tools@3 --unsafe-perm true
 ```
 npm install
 ```
+5. crie um arquivo chamado local.settings.json com a seguintes informações:
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "MongoDbAtlas":"mongodb://usuarioiblueit:senhaiblueit@iblueit-mongo/?retryWrites=true&w=majority Alterar Usuario e senha",
+    "URL_API_IA": "http://127.0.0.1:5000"
+  },
+  "Host": {
+    "CORS": "*",
+    "CORSCredentials": false
+  }
+}
+```
 6. Rode o Script de Start do Azure Function:
 ```
 func host start --cors *
