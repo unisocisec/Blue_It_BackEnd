@@ -18,7 +18,7 @@ Caso queira exemplos de requisições e uma documentação mais detalhada, siga 
 3. Dentro do Postman, vá em File->Import
 4. Importe o arquivo que se encontra na pasta **utils** deste repositório (*BlueApiFunc.postman_collection.json*)
 
-## Tecnologias Utilizadas
+## Tecnologias e Bibliotecas Utilizadas
 - [Node.js](https://nodejs.org/en/) 12.16.1
 - [Microsoft Azure Functions](https://azure.microsoft.com/pt-br/services/functions/) 3.0
 - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
