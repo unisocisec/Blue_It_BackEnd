@@ -38,10 +38,15 @@ module.exports = async function (context, req) {
         return;
     }
 
+    // const findObj = {
+    //     _id: req.params.pacientId,
+    //     _gameToken: req.headers.gametoken
+    // }
+
     const findObj = {
-        _id: req.params.pacientId,
-        _gameToken: req.headers.gametoken
+        _id: req.params.pacientId
     }
+
     const aggregate = PacientModel.aggregate();
     aggregate.match({ _id: mongoose.Types.ObjectId(req.params.pacientId), _gameToken: req.headers.gametoken });
 

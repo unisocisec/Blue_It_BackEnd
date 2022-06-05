@@ -40,9 +40,13 @@ module.exports = async function (context, req) {
         return;
     }
 
+    // const findObj = {
+    //     pacientId: req.params.pacientId,
+    //     _gameToken: req.headers.gametoken
+    // }
+
     const findObj = {
-        pacientId: req.params.pacientId,
-        _gameToken: req.headers.gametoken
+        pacientId: req.params.pacientId
     }
 
     const findOptionsObj = { sort: { created_at: -1 } };

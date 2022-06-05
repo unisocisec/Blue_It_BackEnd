@@ -39,9 +39,13 @@ module.exports = async function (context, req) {
         return;
     }
 
+    // const findObj = {
+    //     _id: req.params.flowDataDeviceId,
+    //     _gameToken: req.headers.gametoken 
+    // }
+
     const findObj = {
-        _id: req.params.flowDataDeviceId,
-        _gameToken: req.headers.gametoken 
+        _id: req.params.flowDataDeviceId
     }
 
     try {

@@ -25,9 +25,11 @@ module.exports = async function (context, req) {
         return;
     }
 
-    const findObj = {
-        _gameToken: req.headers.gametoken
-    }
+    // const findObj = {
+    //     _gameToken: req.headers.gametoken
+    // }
+
+    const findObj = {}
 
     const findOptionsObj = { sort: { created_at: -1 } };
 
